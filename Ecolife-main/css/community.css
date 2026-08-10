@@ -1,0 +1,353 @@
+/* =========================================================
+   EcoLife — Community Forest & Leaderboard Styles
+   ========================================================= */
+
+.community {
+    opacity: 0;
+    animation: fadeSlideUp 0.5s ease forwards;
+}
+
+/* --- Community Stats Banner --- */
+.community__banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.community__stat {
+    padding: var(--space-lg);
+    text-align: center;
+}
+
+.community__stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.community__stat-value {
+    font-size: var(--font-xl);
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.community__stat-value--green { color: var(--accent); }
+.community__stat-value--blue { color: var(--info); }
+.community__stat-value--purple { color: var(--epic); }
+.community__stat-value--gold { color: var(--legendary); }
+
+.community__stat-label {
+    font-size: var(--font-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* --- Community Tabs --- */
+.community__tabs {
+    margin-bottom: var(--space-xl);
+}
+
+/* --- Forest Visualization --- */
+.forest {
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    min-height: 300px;
+}
+
+.forest__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+}
+
+.forest__tree {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-spring);
+    cursor: pointer;
+    position: relative;
+    padding: var(--space-xs);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.forest__tree:hover {
+    transform: translateY(-6px) scale(1.25);
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow-strong);
+    z-index: 10;
+}
+
+.forest__tree-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-xs);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-md);
+}
+
+.forest__tree:hover .forest__tree-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.forest__tree-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.forest__tree-score {
+    color: var(--accent);
+    margin-top: 2px;
+}
+
+/* --- Leaderboard --- */
+.leaderboard {
+    padding: 0;
+    overflow: hidden;
+}
+
+.leaderboard__header {
+    padding: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leaderboard__title {
+    font-size: var(--font-md);
+    font-weight: 700;
+}
+
+.leaderboard__table {
+    width: 100%;
+}
+
+.leaderboard__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    border-top: 1px solid var(--border-color);
+    transition: background var(--transition-fast);
+}
+
+.leaderboard__row:hover {
+    background: var(--bg-hover);
+}
+
+.leaderboard__row--current {
+    background: var(--accent-glow-subtle);
+    border-left: 3px solid var(--accent);
+}
+
+.leaderboard__row--top1 {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.12) 0%, rgba(255, 215, 0, 0.02) 100%);
+    border-left: 3px solid #FFD700;
+    box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.2);
+}
+.leaderboard__row--top2 {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.1) 0%, rgba(192, 192, 192, 0.02) 100%);
+    border-left: 3px solid #E0E0E0;
+}
+.leaderboard__row--top3 {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.1) 0%, rgba(205, 127, 50, 0.02) 100%);
+    border-left: 3px solid #CD7F32;
+}
+
+
+.leaderboard__rank {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.leaderboard__rank--trophy {
+    font-size: 1.3rem;
+}
+
+.leaderboard__user {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex: 1;
+    min-width: 0;
+}
+
+.leaderboard__name {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard__level {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.leaderboard__score {
+    font-size: var(--font-base);
+    font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 80px;
+    text-align: right;
+}
+
+.leaderboard__badges {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.leaderboard__badge-mini {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    background: var(--bg-elevated);
+    border-radius: var(--radius-sm);
+}
+
+/* --- Badge Showcase --- */
+.badge-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
+}
+
+.badge-card {
+    padding: var(--space-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+    cursor: default;
+}
+
+.badge-card:hover {
+    transform: translateY(-4px);
+}
+
+.badge-card--locked {
+    opacity: 0.48;
+    border-style: dashed;
+    background: rgba(21, 28, 23, 0.65);
+}
+
+.badge-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+    display: block;
+}
+
+.badge-card__name {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.badge-card__desc {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.badge-card__rarity {
+    display: inline-block;
+    margin-top: var(--space-sm);
+}
+
+/* Badge unlock animation */
+.badge-unlock {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: var(--z-modal);
+    animation: fadeIn 0.3s ease;
+}
+
+.badge-unlock__content {
+    text-align: center;
+    animation: scaleIn var(--transition-spring) forwards;
+}
+
+.badge-unlock__icon {
+    font-size: 5rem;
+    margin-bottom: var(--space-lg);
+    animation: float 2s ease-in-out infinite;
+}
+
+.badge-unlock__label {
+    font-size: var(--font-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--legendary);
+    margin-bottom: var(--space-sm);
+}
+
+.badge-unlock__name {
+    font-size: var(--font-2xl);
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+}
+
+.badge-unlock__desc {
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .community__banner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .community__banner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .forest__grid {
+        grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    }
+
+    .leaderboard__badges {
+        display: none;
+    }
+
+    .badge-showcase {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+

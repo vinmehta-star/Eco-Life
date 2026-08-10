@@ -1,0 +1,362 @@
+/* =========================================================
+   EcoLife — Dashboard Styles
+   ========================================================= */
+
+.dashboard {
+    opacity: 0;
+    animation: fadeSlideUp 0.5s ease forwards;
+}
+
+/* --- Stats Row (Gaming Cyber HUD) --- */
+.dashboard__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.stat-card {
+    padding: var(--space-lg);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background: linear-gradient(135deg, rgba(16, 22, 18, 0.85) 0%, rgba(10, 14, 12, 0.95) 100%);
+    border: 1px solid rgba(0, 255, 136, 0.18);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.stat-card:hover {
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 255, 136, 0.2);
+    transform: translateY(-3px);
+}
+
+.stat-card__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card__icon--score {
+    background: rgba(0, 255, 136, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.stat-card__icon--streak {
+    background: rgba(255, 184, 0, 0.15);
+    color: var(--warning);
+    border: 1px solid rgba(255, 184, 0, 0.3);
+}
+
+.stat-card__icon--level {
+    background: rgba(179, 102, 255, 0.15);
+    color: var(--epic);
+    border: 1px solid rgba(179, 102, 255, 0.3);
+}
+
+.stat-card__icon--co2 {
+    background: rgba(0, 212, 255, 0.15);
+    color: var(--info);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.stat-card__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.stat-card__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-card__value {
+    font-family: var(--font-mono);
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+.stat-card__label {
+    font-family: var(--font-display);
+    font-size: var(--font-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.stat-card__change {
+    font-family: var(--font-mono);
+    font-size: var(--font-xs);
+    color: var(--accent);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+}
+
+.stat-card__change--down {
+    color: var(--danger);
+}
+
+
+/* --- Main Grid --- */
+.dashboard__grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-lg);
+}
+
+.dashboard__left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.dashboard__right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* --- Quick Actions --- */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+}
+
+.quick-action {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-align: center;
+}
+
+.quick-action:hover {
+    background: var(--accent-glow-subtle);
+    border-color: rgba(0, 255, 136, 0.2);
+    transform: translateY(-2px);
+}
+
+.quick-action__icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+}
+
+.quick-action__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.quick-action__label {
+    font-size: var(--font-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* --- Active Missions Panel --- */
+.active-missions__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.active-mission-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--bg-elevated);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+    cursor: pointer;
+}
+
+.active-mission-row:hover {
+    background: var(--bg-hover);
+}
+
+.active-mission-row__icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-glow);
+    border-radius: var(--radius-md);
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: var(--font-lg);
+}
+
+.active-mission-row__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.active-mission-row__title {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.active-mission-row__meta {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.active-mission-row__points {
+    font-size: var(--font-sm);
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* --- Activity Chart --- */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+}
+
+/* --- Tree Preview Panel --- */
+.tree-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-xl);
+    text-align: center;
+    min-height: 300px;
+}
+
+.tree-preview__svg {
+    width: 200px;
+    height: 200px;
+    margin-bottom: var(--space-md);
+}
+
+.tree-preview__label {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.tree-preview__stage {
+    font-size: var(--font-md);
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: var(--space-xs);
+}
+
+/* --- Recent Badges --- */
+.recent-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.recent-badge {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-size: 1.3rem;
+    transition: all var(--transition-base);
+}
+
+.recent-badge:hover {
+    transform: scale(1.15);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.recent-badge--locked {
+    opacity: 0.45;
+    border-style: dashed;
+    background: rgba(21, 28, 23, 0.65);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .dashboard__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard__stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard__stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-card {
+        padding: var(--space-md);
+    }
+
+    .stat-card__value {
+        font-size: var(--font-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
