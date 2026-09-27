@@ -39,7 +39,7 @@ EcoLife employs a client-heavy, serverless architecture that functions seamlessl
 │                               USER BROWSER                                  │
 │                                                                             │
 │  ┌─────────────────┐    ┌────────────────────┐    ┌──────────────────────┐  │
-│  │   Hash Router   │ ──▶│  State Management  │ ──▶│   View Controllers  │  │
+│  │   Hash Router   │ ─▶│  State Management    ──▶│   View Controllers   │  │
 │  │  (#dashboard,   │    │ (state.js + Local) │    │  (Calc, Tree, AI,    │  │
 │  │   #calculator)  │    └─────────┬──────────┘    │   Missions, Comm)    │  │
 │  └─────────────────┘              │               └──────────────────────┘  │
